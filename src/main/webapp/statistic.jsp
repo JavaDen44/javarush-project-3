@@ -9,13 +9,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <head>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    </head>
     <title>Statistic</title>
 </head>
 <body>
-<h1>Статистика:</h1>
-<form action="${pageContext.request.contextPath}/start" method="post">
-    <h3>Имя в игре: ${username}</h3>
-    <h3>Количество игр: ${visitCount}</h3>
-</form>
+<h2>Статистика:</h2>
+<ul class="list-group list-group-horizontal-md">
+    <form action="${pageContext.request.contextPath}/start" method="post">
+        <li class="list-group-item">
+            Имя в игре
+            <span class="badge text-bg-info rounded-bottom">${username}</span>
+        </li>
+        <li class="list-group-item">
+            Количество игр
+            <span class="badge text-bg-info rounded-bottom">${visitCount}</span>
+        </li>
+    </form>
+</ul>
 </body>
 </html>

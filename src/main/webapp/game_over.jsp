@@ -12,43 +12,35 @@
     <head>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     </head>
-    <title>ИГРА</title>
+    <title>Game Over</title>
 </head>
 <body>
-<h1>ИГРА окончена</h1>
-
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="..." class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <c:if test="${answers.getIsFinish()==true && message.getId()=='1'}">
-                    <h5 class="card-title">${message.getAnswers().get(2).getText()}</h5>
-                    <h5 class="card-title">${gameOver.getText()}</h5>
-                </c:if>
-                <c:if test="${answers.getIsFinish()==true && message.getId()=='2'}">
-                    <h5 class="card-title">${message.getAnswers().get(2).getText()}</h5>
-                    <h5 class="card-title">${gameOver.getText()}</h5>
-                </c:if>
-                <c:if test="${answers.getIsFinish()==false && message.getId()=='3'}">
-                    <h5 class="card-title">${message.getAnswers().get(2).getText()}</h5>
-                    <h5 class="card-title">${gameOver.getText()}</h5>
-                </c:if>
-                <c:if test="${answers.getIsFinish()==true && message.getId()=='3'}">
-                    <h5 class="card-title">${message.getAnswers().get(3).getText()}</h5>
-                    <h5 class="card-title">${gameOver.getText()}</h5>
-                </c:if>
-                <div class="d-grid gap-2 col-8 mx-auto">
-                    <form action="${pageContext.request.contextPath}/restart" method="get">
-                        <button type="submit" class="btn btn-success">Начать игру заново</button>
-                    </form>
-                    <form action="${pageContext.request.contextPath}/stat" method="post">
-                        <button type="submit" class="btn btn-primary">Статистика</button>
-                    </form>
-                </div>
-            </div>
+<div class="card text-center w-50" style="max-width: 720px;">
+    <img src="${pageContext.request.contextPath}/picture/game_over.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <c:if test="${answers.getIsFinish()==true && message.getId()=='1'}">
+            <h5 class="card-title">${message.getAnswers().get(2).getText()}</h5>
+            <h5 class="card-title">${gameOver.getText()}</h5>
+        </c:if>
+        <c:if test="${answers.getIsFinish()==true && message.getId()=='2'}">
+            <h5 class="card-title">${message.getAnswers().get(2).getText()}</h5>
+            <h5 class="card-title">${gameOver.getText()}</h5>
+        </c:if>
+        <c:if test="${answers.getIsFinish()==false && message.getId()=='3'}">
+            <h5 class="card-title">${message.getAnswers().get(2).getText()}</h5>
+            <h5 class="card-title">${gameOver.getText()}</h5>
+        </c:if>
+        <c:if test="${answers.getIsFinish()==true && message.getId()=='3'}">
+            <h5 class="card-title">${message.getAnswers().get(3).getText()}</h5>
+            <h5 class="card-title">${gameOver.getText()}</h5>
+        </c:if>
+        <div class="d-grid gap-2 col-4 mx-auto">
+            <form action="${pageContext.request.contextPath}/restart" method="get">
+                <button type="submit" class="btn btn-outline-success">Начать игру заново</button>
+            </form>
+            <form action="${pageContext.request.contextPath}/stat" method="post">
+                <button type="submit" class="btn btn-outline-primary">Статистика</button>
+            </form>
         </div>
     </div>
 </div>

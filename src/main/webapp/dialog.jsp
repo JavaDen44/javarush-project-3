@@ -12,23 +12,19 @@
     <head>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     </head>
-    <title>ИГРА</title>
+    <title>RPG-games</title>
 </head>
 <body>
-
-<h1>ИГРА</h1>
 <form action="${pageContext.request.contextPath}/dialog" method="post">
-    <div class="card text-center w-50" style="width: 18rem;">
+    <div class="card text-center w-50" style="max-width: 720px;">
+        <img src="${pageContext.request.contextPath}/picture/board_ship.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${message.getText()}</h5>
             <p class="card-text">Что интуиция тебе подскажет? Выбирай...</p>
-            <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+            <div class="d-grid gap-2 col-4 mx-auto">
                 <input type="hidden" name="message" value="${message.getId()}"/>
-                <input type="radio" class="btn-check" name="answers" id="1" value="1">
-                <label class="btn btn-outline-danger" for="1">${message.getAnswers().get(0).getText()}</label>
-                <input type="radio" class="btn-check" name="answers" id="2" value="2">
-                <label class="btn btn-outline-danger" for="2">${message.getAnswers().get(1).getText()}</label>
-                <button type="submit">Ответить</button>
+                <button class="btn btn-outline-primary" type="submit" name="answers" id="1" value="1">${message.getAnswers().get(0).getText()}</button>
+                <button class="btn btn-outline-danger" type="submit" name="answers" id="2" value="2">${message.getAnswers().get(1).getText()}</button>
             </div>
         </div>
     </div>
