@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class IndexServletTest {
+class RestartServletTest {
     private final static String path = "/index.jsp";
     @Mock
     private ServletConfig config;
@@ -30,11 +31,11 @@ public class IndexServletTest {
     @Mock
     private RequestDispatcher dispatcher;
     @Spy
-    private IndexServlet indexServlet;
+    private RestartServlet restartServlet;
     @BeforeEach
     void setup() throws ServletException {
         when(config.getServletContext()).thenReturn(context);
-        indexServlet.init(config);
+        restartServlet.init(config);
     }
 
     /**
@@ -44,7 +45,7 @@ public class IndexServletTest {
     public void whenCallDoGet_ThenServlet_ReturnIndexPage() throws ServletException, IOException {
         when(context.getRequestDispatcher(path)).thenReturn(dispatcher);
 
-        indexServlet.doGet(request,response);
+        restartServlet.doGet(request,response);
 
         verify(context, times(1)).getRequestDispatcher(path);
         verify(dispatcher).forward(request,response);

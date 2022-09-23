@@ -10,6 +10,7 @@ public class Repository<K, T> {
     public void save(K id, T entity) {
         repository.put(id, entity);
     }
+
     public T getById(K id) {
         return repository.get(id);
     }

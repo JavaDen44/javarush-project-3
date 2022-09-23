@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="card text-center w-50" style="max-width: 720px;">
-    <img src="${pageContext.request.contextPath}/picture/game_over.png" class="card-img-top" alt="...">
+    <img src="${pageContext.request.contextPath}/picture/the_end.png" class="card-img-top" alt="...">
     <div class="card-body">
         <c:if test="${answers.getIsFinish()==true && message.getId()=='1'}">
             <h5 class="card-title">${message.getAnswers().get(2).getText()}</h5>

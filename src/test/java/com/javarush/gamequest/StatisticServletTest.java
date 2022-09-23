@@ -15,10 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class IndexServletTest {
-    private final static String path = "/index.jsp";
+class StatisticServletTest {
+    private final static String path = "/statistic.jsp";
     @Mock
     private ServletConfig config;
     @Mock
@@ -30,21 +31,21 @@ public class IndexServletTest {
     @Mock
     private RequestDispatcher dispatcher;
     @Spy
-    private IndexServlet indexServlet;
+    private StatisticServlet staticServlet;
     @BeforeEach
     void setup() throws ServletException {
         when(config.getServletContext()).thenReturn(context);
-        indexServlet.init(config);
+        staticServlet.init(config);
     }
 
     /**
      * Тест проверяет, что RequestDispatcher перенаправляет по указанному пути.
      */
     @Test
-    public void whenCallDoGet_ThenServlet_ReturnIndexPage() throws ServletException, IOException {
+    public void whenCallDoPost_ThenServlet_ReturnStaticPage() throws ServletException, IOException {
         when(context.getRequestDispatcher(path)).thenReturn(dispatcher);
 
-        indexServlet.doGet(request,response);
+        staticServlet.doPost(request,response);
 
         verify(context, times(1)).getRequestDispatcher(path);
         verify(dispatcher).forward(request,response);

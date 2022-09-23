@@ -30,7 +30,7 @@ public class StartServlet extends HttpServlet {
         session.setAttribute("username", username);
 
         User user;
-        Integer visitCount = (Integer) session.getAttribute("visitCount");
+        int visitCount;
         if (session.getAttribute("user") != null && userRepository.isExists(username)){
             user = userRepository.getById(username);
             visitCount = user.getGameCounter() + 1;

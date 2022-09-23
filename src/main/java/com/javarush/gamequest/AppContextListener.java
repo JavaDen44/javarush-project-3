@@ -1,7 +1,10 @@
 package com.javarush.gamequest;
 
-import com.javarush.gamequest.game_content.*;
+import com.javarush.gamequest.game_content.GameOver;
+import com.javarush.gamequest.game_content.Message;
 import com.javarush.gamequest.repository.Repository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -10,10 +13,12 @@ import javax.servlet.annotation.WebListener;;
 
 @WebListener
 public class AppContextListener implements ServletContextListener {
-
+    private static final Logger LOGGER = LogManager.getLogger(AppContextListener.class);
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         GameInitializer initializer = new GameInitializer();
+
+        LOGGER.info(initializer);
         ServletContext ctx = servletContextEvent.getServletContext();
 
         ctx.setAttribute("userRepository", new Repository<>());
